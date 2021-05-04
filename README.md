@@ -1,1 +1,4 @@
 # MatrixToLatex
+
+## Run
+Type ```make```
