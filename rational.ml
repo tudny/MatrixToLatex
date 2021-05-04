@@ -9,10 +9,10 @@ let rec _gcd a b =
 let normalize { num = num; don = don } =
   if num = 0 then { num = 0; don = 1} else
   let sign = (num / abs num) * (don / abs don) in
-  let num = sign * abs num
+  let num = abs num
   and don = abs don in
   let g = _gcd num don in
-  { num = num / g; don = don / g }
+  { num = sign * num / g; don = don / g }
 ;;
 
 let make a b =
@@ -38,6 +38,9 @@ let div m { num = num; don = don } =
   mult m (make don num)
 ;;
 
+let inv { num = num; don = don } = 
+  make don num
+
 let eq { num = num1; don = don1 } { num = num2; don = don2 } =
   num1 = num2 && don1 = don2
 ;;
@@ -60,5 +63,8 @@ let of_int a =
   make a 1
 ;;
 
-
+let to_latex { num = num; don = don } =
+  if don = 1 then string_of_int num
+  else "\\frac{" ^ string_of_int num ^ "}{" ^ string_of_int don ^ "}"
+;;
 

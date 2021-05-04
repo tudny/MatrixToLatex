@@ -16,6 +16,9 @@ val diff : t -> t -> t
 (* a/b / c/d *)
 val div : t -> t -> t
 
+(* b/a *)
+val inv : t -> t
+
 (* a/b = c/d *)
 val eq : t -> t -> bool
 
@@ -30,3 +33,5 @@ val to_string : t -> string
 
 (* a/1 of a *)
 val of_int : int -> t
+
+val to_latex : t -> string
